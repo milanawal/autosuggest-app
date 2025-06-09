@@ -1,0 +1,111 @@
+# ================================
+# Laravel Backend (.env, vendor, etc.)
+# ================================
+backend/.env
+backend/.env.local
+backend/.env.production
+backend/.env.staging
+backend/vendor/
+backend/node_modules/
+backend/storage/app/*
+backend/storage/framework/cache/*
+backend/storage/framework/sessions/*
+backend/storage/framework/testing/*
+backend/storage/framework/views/*
+backend/storage/logs/*
+backend/bootstrap/cache/*
+backend/public/storage
+backend/public/hot
+backend/mix-manifest.json
+backend/.phpunit.result.cache
+backend/Homestead.json
+backend/Homestead.yaml
+backend/npm-debug.log
+backend/yarn-error.log
+
+# ================================
+# React Frontend (node_modules, build, etc.)
+# ================================
+frontend/node_modules/
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+frontend/build/
+frontend/dist/
+frontend/coverage/
+frontend/.nyc_output/
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# ================================
+# Docker & Development
+# ================================
+.docker/
+docker-compose.override.yml
+.dockerignore
+
+# ================================
+# Database
+# ================================
+*.sql
+*.sqlite
+*.db
+
+# ================================
+# IDE & Editor Files
+# ================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ================================
+# OS Generated Files
+# ================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ================================
+# Logs
+# ================================
+*.log
+logs/
+
+# ================================
+# Temporary Files
+# ================================
+*.tmp
+*.temp
+.cache/
+
+# ================================
+# Package Manager
+# ================================
+package-lock.json
+yarn.lock
+composer.lock
+
+# ================================
+# Security & Sensitive Files
+# ================================
+*.pem
+*.key
+*.crt
+.env*
+!.env.example
+
+# ================================
+# Build Artifacts
+# ================================
+*.tar.gz
+*.zip
+*.rar 

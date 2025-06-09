@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: autosuggest-app
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - ./backend:/var/www
+    networks:
+      - autosuggest-network
+    depends_on:
+      - db
+
+  webserver:
+    image: nginx:alpine
+    container_name: autosuggest-webserver
+    restart: unless-stopped
+    ports:
+      - "8000:80"
+    volumes:
+      - ./backend:/var/www
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./frontend/build:/var/www/frontend
+    networks:
+      - autosuggest-network
+    depends_on:
+      - app
+
+  db:
+    image: mysql:8.0
+    container_name: autosuggest-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: autosuggest
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - autosuggest-network
+
+  node:
+    image: node:18
+    container_name: autosuggest-node
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "3000:3000"
+    networks:
+      - autosuggest-network
+    environment:
+      - HOST=0.0.0.0
+      - WATCHPACK_POLLING=true
+      - CHOKIDAR_USEPOLLING=true
+    command: npm start
+
+volumes:
+  dbdata:
+    driver: local
+
+networks:
+  autosuggest-network:
+    driver: bridge
