@@ -1,0 +1,1 @@
+export { getCategorySuggestion, type SuggestionResponse } from './autosuggest'; 
